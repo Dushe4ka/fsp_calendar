@@ -5,11 +5,17 @@ from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, UpdateView, DetailView
 from config import settings
 
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, UserUpdateForm, UserProfileForm
 from users.models import User
+
+
+class UserDetailView(DetailView):
+    model = User
+    form_class = UserProfileForm
+    template_name = 'user_detail.html'
 
 
 class UserCreateView(CreateView):
@@ -32,6 +38,13 @@ class UserCreateView(CreateView):
             recipient_list=[user.email],
         )
         return super().form_valid(form)
+
+
+class UserUpdateView(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'user_update.html'
+    success_url = reverse_lazy('mycalendar:list')
 
 
 def email_verification(request, token):

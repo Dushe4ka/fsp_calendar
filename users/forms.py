@@ -19,3 +19,15 @@ class UserRegisterForm(StyleFormMixin, UserCreationForm):
         model = User
         fields = ('email', 'password1', 'password2')
 
+
+class UserUpdateForm(StyleFormMixin, UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('email', 'phone', 'avatar', 'country')
+
+
+class UserProfileForm(StyleFormMixin, UserCreationForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+

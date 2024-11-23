@@ -1,6 +1,6 @@
 from django.forms import ModelForm, forms, BooleanField
 
-from mycalendar.models import SportEvents
+from mycalendar.models import SportEvents #Notifications
 
 forbidden_words = [
     "казино",
@@ -23,6 +23,12 @@ class StyleFormMixin:
                 fild.widget.attrs['class'] = 'form-check-input'
             else:
                 fild.widget.attrs['class'] = 'form-control'
+
+
+# class NotificationsForm(StyleFormMixin, ModelForm):
+#     class Meta:
+#         model = Notifications
+#         fields = "__all__"
 
 
 class EventsForm(StyleFormMixin, ModelForm):
