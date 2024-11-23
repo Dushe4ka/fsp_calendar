@@ -8,3 +8,6 @@ urlpatterns = [
     path('', include('mycalendar.urls', namespace='mycalendar')),
     path('users/', include('users.urls', namespace='users')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Add static files to the URL configuration
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

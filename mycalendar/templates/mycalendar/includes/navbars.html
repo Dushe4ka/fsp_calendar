@@ -1,0 +1,56 @@
+<!--Фильтр в виде всплывающего слева окна для ввода данных-->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Фильтр</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <label for="discipline">Вид спорта:</label>
+                <input type="text" class="form-control" placeholder="Введите вид спорта">
+            </div>
+            <div>
+                <label for="discipline">Дисциплина:</label>
+                <input type="text" class="form-control" placeholder="Введите дисциплину">
+            </div>
+            <div>
+                <label for="location">Тип соревнования:</label>
+                <input type="text" class="form-control" placeholder="Введите тип">
+            </div>
+            <div>
+                <label for="location">Место проведения:</label>
+                <input type="text" class="form-control" placeholder="Введите место проведения">
+            </div>
+            <div>
+                <label for="program">Программа:</label>
+                <input type="text" class="form-control" placeholder="Введите программу">
+            </div>
+            <div>
+                <label for="participants">Количество участников:</label>
+                <input type="number" min="0" class="form-control" placeholder="Введите количество участников">
+            </div>
+            <div>
+                <label for="gender">Пол:</label>
+                <select id="gender" class="form-control">
+                    <option value="">Все</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
+                </select>
+            </div>
+            <div>
+                <label for="participants">Возраст участника:</label>
+                <input type="number" min="0" class="form-control" placeholder="Введите возраст участника">
+            </div>
+            <div>
+                <label for="date">Дата с:</label>
+                <input type="date" id="datestart" class="form-control">
+            </div>
+            <div>
+                <label for="date">Дата по:</label>
+                <input type="date" id="dateend" class="form-control">
+            </div>
+            <div class="d-flex align-items-end">
+                <button type="submit" class="btn btn-dark .bg-gradient w-100 mt-2 shadow">Применить фильтры</button>
+            </div>
+        </div>
+    </div>

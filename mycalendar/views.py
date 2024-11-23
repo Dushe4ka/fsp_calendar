@@ -14,7 +14,7 @@ from mycalendar.models import SportEvents
 
 class EventsListView(ListView):
     model = SportEvents
-    template_name = 'mycalendar/sportsevent_list.html'
+    template_name = 'mycalendar/sportevents_list.html'
     paginate_by = 20
 
     def get_queryset(self): # новый
@@ -29,3 +29,7 @@ class EventsListView(ListView):
 
 class EventsDetailView(DetailView):
     model = SportEvents
+
+
+class AboutTemplateView(TemplateView):
+    template_name = 'mycalendar/About.html'

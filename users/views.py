@@ -65,13 +65,3 @@ class GeneratePasswordView(PasswordResetView):
 class ContactsTemplateView(TemplateView):
     template_name = 'contacts.html'
 
-    def post(self, request, *args, **kwargs):
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-
-        print(f"\n\nИмя - {name}\n"
-              f"Телефон - {phone}\n"
-              f"Сообщение - {message}\n\n")
-
-        return super().get(request, *args, **kwargs)
