@@ -5,7 +5,7 @@ from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from config import settings
 
 from users.forms import UserRegisterForm
@@ -61,3 +61,17 @@ class GeneratePasswordView(PasswordResetView):
                     )
             return redirect(reverse("users:login"))
 
+
+class ContactsTemplateView(TemplateView):
+    template_name = 'contacts.html'
+
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        print(f"\n\nИмя - {name}\n"
+              f"Телефон - {phone}\n"
+              f"Сообщение - {message}\n\n")
+
+        return super().get(request, *args, **kwargs)

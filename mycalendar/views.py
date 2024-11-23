@@ -5,47 +5,11 @@ from django.db.models import Q
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from mycalendar.forms import EventsForm
 from mycalendar.models import SportEvents
-
-
-# class EventsCreateView(LoginRequiredMixin, CreateView):
-#     model = SportEvents
-#     form_class = EventsForm
-#     success_url = reverse_lazy('mycalendar:list')
-#
-#     def form_valid(self, form):
-#         context_data = self.get_context_data()
-#         formset = context_data['formset']
-#         form.instance.owner = self.request.user
-#
-#         if form.is_valid() and formset.is_valid():
-#             self.object = form.save()
-#             formset.instance = self.object
-#             formset.save()
-#             return super().form_valid(form)
-#         else:
-#             return self.render_to_response(self.get_context_data(form=form, formset=formset))
-#
-#
-# class EventsUpdateView(LoginRequiredMixin, UpdateView):
-#     model = SportEvents
-#     form_class = EventsForm
-#     success_url = reverse_lazy('mycalendar:list')
-#
-#     def form_valid(self, form):
-#         context_data = self.get_context_data()
-#         formset = context_data['formset']
-#         if form.is_valid() and formset.is_valid():
-#             self.object = form.save()
-#             formset.instance = self.object
-#             formset.save()
-#             return super().form_valid(form)
-#         else:
-#             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
 class EventsListView(ListView):
@@ -65,8 +29,3 @@ class EventsListView(ListView):
 
 class EventsDetailView(DetailView):
     model = SportEvents
-
-
-# class EventsDeleteView(LoginRequiredMixin, DeleteView):
-#     model = SportEvents
-#     success_url = reverse_lazy('mycalendar:list')

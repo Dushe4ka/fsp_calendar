@@ -87,7 +87,9 @@
                 </a>
             </div>
             <div class="p-2">
-                <button class="btn btn-dark">Отменить фильтр</button>
+                <a class="btn btn-dark" data-bs-toggle="offcanvas" href="{% url 'mycalendar:list' %}" role="button" aria-controls="offcanvasExample">
+                    Отменить фильтр
+                </a>
             </div>
           </div>
         <!-- Таблица -->
