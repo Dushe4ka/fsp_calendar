@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <title>Единый календарный план спортивных мероприятий</title>
+</head>
+<body>
+    {% include 'mycalendar/includes/incr_menu.html' %}
+    <header>
+        <div class="container-fluid">
+            <div class="row-md-3">
+                <h3 class="header_text">Все события</h3>
+                <div class="header_block"></div>
+            </div>
+        </div>
+    </header>  
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Фильтр</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <label for="discipline">Вид спорта:</label>
+                <input type="text" id="discipline" class="form-control" placeholder="Введите вид спорта">
+            </div>
+            <div>
+                <label for="discipline">Дисциплина:</label>
+                <input type="text" id="discipline" class="form-control" placeholder="Введите дисциплину">
+            </div>
+            <div>
+                <label for="location">Тип соревнования:</label>
+                <input type="text" id="location" class="form-control" placeholder="Введите тип">
+            </div>
+            <div>
+                <label for="location">Место проведения:</label>
+                <input type="text" id="location" class="form-control" placeholder="Введите место проведения">
+            </div>
+            <div>
+                <label for="program">Программа:</label>
+                <input type="text" id="program" class="form-control" placeholder="Введите программу">
+            </div>
+            <div>
+                <label for="participants">Количество участников:</label>
+                <input type="number" min="0" id="participants" class="form-control" placeholder="Введите количество участников">
+            </div>
+            <div>
+                <label for="gender">Пол:</label>
+                <select id="gender" class="form-control">
+                    <option value="">Все</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
+                </select>
+            </div>
+            <div>
+                <label for="participants">Возраст участника:</label>
+                <input type="number" min="0" id="participants" class="form-control" placeholder="Введите возраст участника">
+            </div>
+            <div>
+                <label for="date">Дата:</label>
+                <input type="date" id="date" class="form-control">
+            </div>
+            <div class="d-flex align-items-end">
+                <button type="submit" class="btn btn-dark w-100 mt-5">Применить фильтры</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4"> 
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1">
+                <div class="row text-center">
+                    <form class="d-flex" role="search" action="{% url 'mycalendar:list' %}" method="get">
+                        <input class="form-control me-2" type="text" name="q" placeholder="Поиск по типу">
+                        <button type="submit" class="btn btn-dark">Найти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="p-2">
+                <a class="btn btn-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    Открыть фильтр
+                </a>
+            </div>
+            <div class="p-2">
+                <button class="btn btn-dark">Отменить фильтр</button>
+            </div>
+          </div>
+        <!-- Таблица -->
+    {% block content %}
+    {% endblock %}
+    </div>
+        <!-- Подвал -->
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <div class="header_block"></div>
+                <div class="d-flex">
+                    <div class="p-2 flex-grow-1">
+                        <span>© 2024 PRO-TEAM. Все права защищены.</span>
+                    </div>
+                    <div class="p-2"></div>
+                    <div class="p-2">
+                        <a href="#"><img src="/static/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                        <a href="#"><img src="/static/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                        <a href="#"><img src="/static/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                        <a href="#"><img src="/static/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                    </div>
+                  </div>
+            </div>
+        </footer>
+    <!-- Подключение скриптов -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/747d436812.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

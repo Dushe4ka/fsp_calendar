@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../src/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../src/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <title>Единый календарный план спортивных мероприятий</title>
+</head>
+<body>
+<!-- Навигационное меню -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" id="fixed">
+            <a href="#" class="i-calendar"><img src="/src/icons/schedule_logo (1).webp"" alt="calendar"></a>
+            <a class="navbar-brand logo-text" href="#"><h1>Единый календарный план <br>спортивных мероприятий</h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Все события</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Обратная связь</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">О сайте</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="favorites-btn"><i class="fa-solid fa-star" style="color: #FFD43B;"></i><span>Избранное</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="notifications-btn"><i class="fa-regular fa-bell"></i><span>Уведомления</span></a>
+                    </li>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Залыч<img src="/src/image/avatar.jpg" alt="Avatar" width="30" height="30" class="rounded-circle mr-2 avatar">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Мой профиль</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><div class="logout-text">Выход</div><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+      </nav>
+<!--Заголовок страницы-->
+    <header>
+        <div class="container-fluid">
+            <div class="row-md-3">
+                <h3 class="header_text">Все события</h3>
+                <div class="header_block"></div>
+            </div>
+        </div>
+    </header>  
+<!--Фильтр в виде всплывающего слева окна для ввода данных-->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Фильтр</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <label for="discipline">Вид спорта:</label>
+                <input type="text" class="form-control" placeholder="Введите вид спорта">
+            </div>
+            <div>
+                <label for="discipline">Дисциплина:</label>
+                <input type="text" class="form-control" placeholder="Введите дисциплину">
+            </div>
+            <div>
+                <label for="location">Тип соревнования:</label>
+                <input type="text" class="form-control" placeholder="Введите тип">
+            </div>
+            <div>
+                <label for="location">Место проведения:</label>
+                <input type="text" class="form-control" placeholder="Введите место проведения">
+            </div>
+            <div>
+                <label for="program">Программа:</label>
+                <input type="text" class="form-control" placeholder="Введите программу">
+            </div>
+            <div>
+                <label for="participants">Количество участников:</label>
+                <input type="number" min="0" class="form-control" placeholder="Введите количество участников">
+            </div>
+            <div>
+                <label for="gender">Пол:</label>
+                <select id="gender" class="form-control">
+                    <option value="">Все</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
+                </select>
+            </div>
+            <div>
+                <label for="participants">Возраст участника:</label>
+                <input type="number" min="0" class="form-control" placeholder="Введите возраст участника">
+            </div>
+            <div>
+                <label for="date">Дата:</label>
+                <input type="date" id="date" class="form-control">
+            </div>
+            <div class="d-flex align-items-end">
+                <button type="submit" class="btn btn-dark w-100 mt-5">Применить фильтры</button>
+            </div>
+        </div>
+    </div>
+<!--Кнопки открытия фильтра и сброса фильтра-->
+    <div class="container mt-4"> 
+        <div class="d-flex">
+            <div class="p-2 flex-grow-1"></div>
+            <div class="p-2">
+                <a class="btn btn-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    Открыть фильтр
+                </a>
+            </div>
+            <div class="p-2">
+                <button class="btn btn-dark">Сброс фильтр</button>
+            </div>
+          </div>
+<!-- Таблица -->
+        <table class="table table-striped table-bordered" id="event-table">
+            <thead>
+                <tr>
+                    <th>Дисциплина</th>
+                    <th>Программа</th>
+                    <th>Место проведения</th>
+                    <th>Количество участников</th>
+                    <th>Пол</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Бильярд</th>
+                    <td>Свободная пирамида</td>
+                    <td>Brown</td>
+                    <td>3</td>
+                    <td>ммм</td>
+                    <td>23.11.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Баскетбол</th>
+                    <td>Стрит</td>
+                    <td>Стадион АФСО</td>
+                    <td>4</td>
+                    <td>Мужской</td>
+                    <td>24.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Волейбол</th>
+                    <td>Командный</td>
+                    <td>Пляж маями бич</td>
+                    <td>60</td>
+                    <td>Мужчины женщины до 18 лет</td>
+                    <td>30.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Бильярд</th>
+                    <td>Свободная пирамида</td>
+                    <td>Brown</td>
+                    <td>3</td>
+                    <td>ммм</td>
+                    <td>23.11.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Баскетбол</th>
+                    <td>Стрит</td>
+                    <td>Стадион АФСО</td>
+                    <td>4</td>
+                    <td>Мужской</td>
+                    <td>24.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Волейбол</th>
+                    <td>Командный</td>
+                    <td>Пляж маями бич</td>
+                    <td>60</td>
+                    <td>Мужчины женщины до 18 лет</td>
+                    <td>30.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Бильярд</th>
+                    <td>Свободная пирамида</td>
+                    <td>Brown</td>
+                    <td>3</td>
+                    <td>ммм</td>
+                    <td>23.11.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Баскетбол</th>
+                    <td>Стрит</td>
+                    <td>Стадион АФСО</td>
+                    <td>4</td>
+                    <td>Мужской</td>
+                    <td>24.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Волейбол</th>
+                    <td>Командный</td>
+                    <td>Пляж маями бич</td>
+                    <td>60</td>
+                    <td>Мужчины женщины до 18 лет</td>
+                    <td>30.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Бильярд</th>
+                    <td>Свободная пирамида</td>
+                    <td>Brown</td>
+                    <td>3</td>
+                    <td>ммм</td>
+                    <td>23.11.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Баскетбол</th>
+                    <td>Стрит</td>
+                    <td>Стадион АФСО</td>
+                    <td>4</td>
+                    <td>Мужской</td>
+                    <td>24.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Волейбол</th>
+                    <td>Командный</td>
+                    <td>Пляж маями бич</td>
+                    <td>60</td>
+                    <td>Мужчины женщины до 18 лет</td>
+                    <td>30.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Бильярд</th>
+                    <td>Свободная пирамида</td>
+                    <td>Brown</td>
+                    <td>3</td>
+                    <td>ммм</td>
+                    <td>23.11.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Баскетбол</th>
+                    <td>Стрит</td>
+                    <td>Стадион АФСО</td>
+                    <td>4</td>
+                    <td>Мужской</td>
+                    <td>24.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Волейбол</th>
+                    <td>Командный</td>
+                    <td>Пляж маями бич</td>
+                    <td>60</td>
+                    <td>Мужчины женщины до 18 лет</td>
+                    <td>30.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Бильярд</th>
+                    <td>Свободная пирамида</td>
+                    <td>Brown</td>
+                    <td>3</td>
+                    <td>ммм</td>
+                    <td>23.11.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Баскетбол</th>
+                    <td>Стрит</td>
+                    <td>Стадион АФСО</td>
+                    <td>4</td>
+                    <td>Мужской</td>
+                    <td>24.12.2024</td>
+                </tr>
+                <tr>
+                    <th scope="row">Волейбол</th>
+                    <td>Командный</td>
+                    <td>Пляж маями бич</td>
+                    <td>60</td>
+                    <td>Мужчины женщины до 18 лет</td>
+                    <td>30.12.2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- Подвал -->
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <div class="header_block"></div>
+                    <div class="d-flex">
+                        <div class="p-2 flex-grow-1">
+                            <span>© 2024 PRO-TEAM. Все права защищены.</span>
+                        </div>
+                        <div class="p-2"></div>
+                        <div class="p-2">
+                            <a href="#"><img src="/src/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                            <a href="#"><img src="/src/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                            <a href="#"><img src="/src/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                            <a href="#"><img src="/src/icons/telegram-icon (1).webp" alt="telegram" class="t-icon"></a>
+                        </div>
+                    </div>
+            </div>
+        </footer>
+<!-- Подключение скриптов -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/747d436812.js" crossorigin="anonymous"></script>
+</body>
+</html>

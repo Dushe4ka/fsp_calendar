@@ -1,0 +1,115 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    position: relative;
+    background-color: #f4f4f4;
+}
+
+header {
+    position: relative;
+}
+
+h1{
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.header_text {
+    margin-top: 75px;
+}
+
+.header_block {
+    display: block;
+    height: 3px;
+    background-color: black;
+}
+
+#event-table {
+    margin-top: 20px;
+}
+
+#fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f4f4f4f4;
+    z-index: 1000;
+}
+
+.i-calendar {
+    margin-right: 5px;
+}
+
+.logo-text {
+    font-weight: 700;
+}
+
+#favorites-btn {
+    color: #ffc107;
+}
+
+#favorites-btn:hover {
+    text-decoration: none;
+    color: gold;
+}
+
+/* Стили для уведомления */
+#notifications-btn {
+    position: relative;
+}
+
+.logout-text {
+    display: inline-block;
+    margin-right: 7px;
+}
+
+/*
+#notifications-btn::after {
+    content: '10';
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    padding: 2px 5px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+*/
+
+.navbar .nav-link {
+    cursor: pointer;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.avatar {
+    margin-left: 7px;
+}
+
+#favorites-btn i,
+#notifications-btn i {
+    display: inline-block;
+}
+
+#favorites-btn span,
+#notifications-btn span {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    #favorites-btn i,
+    #notifications-btn i {
+        display: none;
+    }
+
+    #favorites-btn span,
+    #notifications-btn span {
+        display: inline-block;
+    }
+}

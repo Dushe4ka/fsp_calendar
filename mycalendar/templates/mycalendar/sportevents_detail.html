@@ -1,0 +1,31 @@
+{% extends 'mycalendar/home.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3"
+            <div class="col">
+                <div class="card shadow-sm">
+<!--                    <img src = "{{ product.image | media_filter }}">-->
+                    <div class="card-body">
+                        <p class="card-text">Тип: {{ object.type }}</p>
+                        <p class="card-text">Вид спорта: {{ object.sport }}</p>
+                        <p class="card-text">Дисциплина: {{ object.discip }}</p>
+                        <p class="card-text">Программа: {{ object.program }}</p>
+                        <p class="card-text">Возрастная группа: {{ object.gender_age }}</p>
+                        <p class="card-text">Дата: {{ object.date_start }} - {{ object.date_end }}</p>
+                        <p class="card-text">Место проведения: {{ object.country }}, {{ object.subject }}, {{ object.city }}</p>
+                        <p class="card-text">Количество человек: {{ object.participants }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="{% url 'mycalendar:list' %}" role="button">Вернуться</a>
+                            </div>
+<!--                            <small class="text-body-secondary">Просмотры: {{ object.views }}</small>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
